@@ -1,4 +1,4 @@
-Bizhawk Script for messing with Stale Reference Manipulation (SRM) in the Legend of Zelda: Phantom Hourglass. Work in progress! The graphics code is not very optimized yet so it make the game real slow when there are lots of actor loaded.
+Bizhawk Script for messing with Stale Reference Manipulation (SRM) in the Legend of Zelda: Phantom Hourglass. Work in progress! The graphics code is not very optimized yet so it makes the game real slow when there are lots of actors loaded.
 
 ## How to Install
 1. Download actor_script.lua
