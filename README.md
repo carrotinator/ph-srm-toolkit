@@ -1,4 +1,4 @@
-Bizhawk Script for messing with Stale Reference Manipulation (SRM) in the Legend of Zelda: Phantom Hourglass. Work in progress! The graphics code is not very optimized yet so it make the game real slow when there are lots of actor loaded.
+Bizhawk Script for messing with Stale Reference Manipulation (SRM) in the Legend of Zelda: Phantom Hourglass. Work in progress! The graphics code is not very optimized yet so it makes the game real slow when there are lots of actors loaded.
 
 ## How to Install
 1. Download actor_script.lua
@@ -12,11 +12,17 @@ The `SRM Toolkit` window shows some SRM related info, like the next actor index 
 - `Overflow`: Maxes out the next actor index, as if you're performing SRM. For finding viable setups.
 
 ## How to perform SRM in Phantom Hourglass
-1. Hold an actor, and remove it without playing any animations that reset Link's reference. There are currently 4(ish) known methods:
+1. Hold an actor, and remove it without playing any animations that reset Link's reference. There are currently 6(ish) known methods:
     - Hold a bomb, and have it explode while you have invulnerability frames.
     - Hold a bomb, and have it explode while standing in a safe zone.
     - Hold a bomb, and have it explode while running such that you outrun the explosion without taking damage.
     - Hold any actor, and swap to Gongoron
+    - Trigger certain cutscenes while holding something. These include:
+      - earthquake cs in the intro
+      - first time you see linebeck's ship
+      - first time you see totok (need to carry a barrel there all the way from one of the se houses)
+      - when you return to the boat with sw sea chart
+    - Pick up free standing items like small keys, big rupees or treasure maps while holding something 
 2. You goal is now to load your desired actor into the same memory slot that link was holding, with the same actor index, to create a link.
 Each new actor that is created is assigned the next actor index.
 The only known way to assign the same index multiple times is to overflow it.
