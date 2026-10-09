@@ -45,6 +45,7 @@ local IDENT_TABLE = {
     [0x216BEE4] = "Sq Crystal",
     [0x216BDCC] = "Force Gem",
     [0x216C00C] = "Small Key",
+    [0x216CFC8] = "Postbox",
 
     -- Enemies
     [0x21855AC] = "ChuChu",
@@ -70,6 +71,9 @@ local IDENT_TABLE = {
     [0x217AB0C] = "Bone Projectile",
     [0x217A414] = "Stalfos_Body",
     [0x217A990] = "Stalfos_Head",
+    [0x2185AD4] = "Gel",
+    [0x2194BC8] = "Bubble",
+    [0x2171108] = "Pols Voice",
 
     -- Static Actors
     [0x2158134] = "Dig Spot",
@@ -82,10 +86,13 @@ local IDENT_TABLE = {
     [0x20E8CB4] = "Spawner",
     [0x20E2930] = "Trigger",
     [0x20E2AA8] = "Camera Thing?",
-    [0x215A478] = "Cutscene Trigger",
+    [0x215A478] = "CS Trig A4",
+    [0x2159CF8] = "CS Trig 9C",
 
     -- NPCs
     [0x21947C8] = "Linebeck",
+    [0x218E348] = "Oshus",
+    [0x217A374] = "NPC_Basic",
     [0x218E4D4] = "Freedle",
     [0x218E768] = "Lapelli",
     [0x217A668] = "Gongoron",
