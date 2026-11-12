@@ -49,8 +49,9 @@ This does not remove the reference from link, so you can repeat it until the act
 <img width="1340" height="794" alt="image" src="https://github.com/user-attachments/assets/a52eb117-14ad-4d5d-b31e-fa41af86bcf3" />
 
 ## Slim Version
-There's a slightly optimized branch slim, with less info and worse graphics. I had the idea to route a cheat category (similar to moonjump% or tmc firerod%) as an incentive to mess with SRM some more (worth it, found push block stacking!), and this is my work in progress enabler for the specific rules I thought made an interesting run. Basically:
+There's a slightly optimized branch *slim*, with less info and worse graphics. I had the idea to route a cheat category (similar to moonjump% or tmc firerod%) as an incentive to mess with SRM some more (worth it, found push block stacking!), and this is my work in progress enabler for the specific rules I thought made an interesting run. Basically:
 - You can grab any actor at any time, as if it was SRM:ed on the spot without any setup. You can use a script to view current actors, and select one to grab it.
 
 This ruleset allows for blue door skip, also skipping NE Quadrant and Goron Island; and lots of fun skips anywhere there's a push block or free-standing small key.
+The script is not really good enough for runs (at least with my computing power and bizhawk), so i'm thinking of trying to port it to MelonDS if the experimental scripting branch supports the needed features.
 
