@@ -1,7 +1,7 @@
 form = nil
 
-WIDTH = 450
-HEIGHT = 900
+WIDTH = 200
+HEIGHT = 700
 LINESIZE = 13
 TEXTBOXSIZE = 22
 
@@ -110,6 +110,7 @@ ADDR_gOverlayManager_mLoadedOverlays_4 = 0x027e0910
 ADDR_gMapManager = 0x027e0e60
 ADDR_gActorManager = 0x027e0FE4
 
+stage_addr = 0x021B2E94
 
 BLACK = {0, 0, 0}
 WHITE = {1, 1, 1}
@@ -155,6 +156,10 @@ function main()
     while true do
         forms.clear(canvas, "white")
         forms.clear(canvas_toolkit, "white")
+        if not check_stage() then
+            draw_simple("At Sea", 0, 0)
+            goto continue
+        end
         
         get_addresses()
         draw_header()
@@ -166,8 +171,11 @@ function main()
         draw_table(current_table)
         draw_toolkit_data()
 
+        ::continue::
         forms.refresh(canvas)
         forms.refresh(canvas_toolkit)
+        
+        emu.frameadvance()
         emu.frameadvance()
     end
 end
@@ -261,6 +269,14 @@ function read_coords(actor_data)
     return actor_coords
 end
 
+function check_stage()
+    local stage = read("u8", stage_addr)
+    if stage == 0 then
+        return false
+    end
+    return true
+end
+
 function get_data(last_table)
     local res = {}
     local count_actors = 1
@@ -281,10 +297,12 @@ function get_data(last_table)
             else
                 -- identify actor from lookup table
                 local name = "unk"
-                local actor_ident = read("u32", actor_data)
-                if IDENT_TABLE[actor_ident] then
-                    name = IDENT_TABLE[actor_ident]
+                local actor_ident = read("u32", actor_data+4)
+                local bits = {}
+                for i=0,3 do
+                    bits[i+1] = (actor_ident >> ((3-i)*8)) & 0xff
                 end
+                name = string.char(table.unpack(bits))
                 table.insert(res, {
                     name=name, 
                     address=actor_data, 
@@ -312,23 +330,19 @@ function draw_simple_toolkit(text, x, y, bg_color)
 end
 
 function draw_header()
-    local header = {"Offset", "Name", "Address", "Index", "Coords (kilo-units)"}
-    for i, x in ipairs(COLUMN_OFFSETS) do
-        draw_simple(header[i], x, 0, "bold")
-    end
+    local header = "i  Name"
+    draw_simple(header, x, 0, "bold")
 end
 
 function draw_table(data)
+    local text = ""
     for y, row in ipairs(data) do
-        -- print(to_hex(y))
-        draw_simple(to_hex(y-1), COLUMN_OFFSETS[1], y)
-        draw_simple(row.name, COLUMN_OFFSETS[2], y)
-        if row.name ~= "-" then
-            draw_simple(to_hex(row.address), COLUMN_OFFSETS[3], y)
-            draw_simple(to_hex(row.counter), COLUMN_OFFSETS[4], y)
-            draw_simple(format_coords(row.coords), COLUMN_OFFSETS[5], y)
-        end
+        local i = y - 1
+        local num = i .. "   "
+        num = string.sub(num, 1, 3)
+        text = text..num..row.name..'\n'
     end
+    forms.drawText(canvas, 0, ELEMENT_HEIGHT, text, "black", "white", TEXTSIZE, "Consolas", mod, "left", "top")
 end
 
 function draw_toolkit_data()
@@ -374,6 +388,7 @@ end
 function clickevent_select_row()
     if 0 <= mouse_x and mouse_x <= WIDTH and 0 <= mouse_y and mouse_y <= HEIGHT then
         selected_row = math.floor(mouse_y / ELEMENT_HEIGHT)
+        button_event_hold()
     end
 end
 
