@@ -33,9 +33,24 @@ Since this is an unsigned 32bit integer, this can take a long time.
 This does not remove the reference from link, so you can repeat it until the actor despwans. Throw it to reset the reference, without updating the position.
 
 ## Known SRM Applications
-Nothing! so far... happy glitchhunting!
+- If you SRM a push block, placing it will clip link on top of it. You can keep placing it to gain height. 10 placements is usually enough to clear invisible walls and get out of bounds.
+  There are several places where this can skip items for low%. The actor heaps look good for all spots, but I've yet to try and align it. Can Skip:
+  - 1 small key in mountain passage
+  - Boss key in tow, (+ bombs and small key if bomb skip is solved elsewhere)
+  - boss key, 2 small keys and square crystal in toc
+  - boss key + 2 small keys in ToI
+- If you SRM a boulder or armos statue, you can clip through the corners of rounded collision. No applications yet.
+- You can SRM moving platforms. They will then draw a straight path back to their last target node. You can keep placing them to gain distance in other directions, but fighting the flow is not really viable, unless you time it with them stopping at an end node.
+  - In temple of courage B1, you can skip to both the invisible maze (redundant with beetle jump) and reach the north-eastern most staircase without bow. The pols key allows for setting up for a push block SRM on 2F to skip the boss key, allowing Crayk enter without bow. Unfortunately you can't set up for the platform SRM without either bombs or bow to access the first pols key.
+  - In totok b7 you can SRM the NE platform to skirt around after entering. Skips changing floors thrice and hitting a switch, if those are stats you want to minimize.
 
 ## Images
 <img width="1359" height="801" alt="image" src="https://github.com/user-attachments/assets/01473a2e-ebca-4bc5-acfe-65438dd786f7" />
 <img width="1340" height="794" alt="image" src="https://github.com/user-attachments/assets/a52eb117-14ad-4d5d-b31e-fa41af86bcf3" />
+
+## Slim Version
+There's a slightly optimized branch slim, with less info and worse graphics. I had the idea to route a cheat category (similar to moonjump% or tmc firerod%) as an incentive to mess with SRM some more (worth it, found push block stacking!), and this is my work in progress enabler for the specific rules I thought made an interesting run. Basically:
+- You can grab any actor at any time, as if it was SRM:ed on the spot without any setup. You can use a script to view current actors, and select one to grab it.
+
+This ruleset allows for blue door skip, also skipping NE Quadrant and Goron Island; and lots of fun skips anywhere there's a push block or free-standing small key.
 
